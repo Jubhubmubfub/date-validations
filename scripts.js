@@ -11,10 +11,7 @@ $(document).ready(function(){
    $('body').on('click','#submit',function(){
      console.log("the #name is"+$('#name').val());
 
-     if ($('#name').val()==="Name" || $('#name').val()==false ){
-       $('#warning-name').show();
-     }//end if
-     else if ($('#name').val()!="Name" && $('#datepicker2').val()!="To" && $('#datepicker1').val()!="From") {
+     if ($('#name').val()!="Name" && $('#datepicker2').val()!="To" && $('#datepicker1').val()!="From" && $('#name').val()!=false) {
        $("<div title='Congratulations!'>Thanks "+$('#name').val()+"! Your Cruise leaves on "+$('#datepicker1').val()+" and returns on "+$('#datepicker2').val()+"</div>").dialog({
           modal: true,
           buttons: {
@@ -25,6 +22,13 @@ $(document).ready(function(){
         });//end dialog box
         $('#warning-name').hide();
       }//end else
+
+     else if ($('#name').val()==="Name" || $('#name').val()==false ){
+       $('#warning-name').show();
+     }//end if
+     else if ($('#name').val()!="Name"){
+       $('#warning-name').hide();
+     }
 
       if ($('#datepicker1').val()==="From"){
         $('#warning-date1').show();
